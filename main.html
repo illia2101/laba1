@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <language="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    
+    <div class="search-container">
+      <h1>Teachinder</h1>
+      <input type="text" placeholder="Name, note or age search..." />
+      <button>Search</button>
+    </div>
+
+    <div class="navigation">
+      <a href="#section-teachers">
+        <button>Teachers</button>
+      </a>
+      <a href="#section-statistics">
+        <button>Statistics</button>
+      </a>
+      <a href="#section-favorites">
+        <button>Favorites</button>
+      </a>
+      <a href="#section-about">
+        <button>About</button>
+      </a>
+      <button>Add Teacher</button>
+    </div>
+
+    <div id="section-teachers">
+      <h2>Top Teachers</h2>
+      <label for="age">Age:</label>
+      <select id="age" name="age">
+        <option value="18-31">18-31</option>
+        <option value="31-45">31-45</option>
+        <option value="45-70">45-70</option>
+      </select>
+
+      <label for="region">Region:</label>
+      <select id="region" name="region">
+        <option value="Europe">Europe</option>
+        <option value="North America">North America</option>
+        <option value="Asia">Asia</option>
+        <option value="Africa">Africa</option>
+        <option value="South America">South America</option>
+        <option value="Australia">Australia</option>
+      </select>
+
+      <label for="sex">Sex:</label>
+      <select id="sex" name="sex">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label> <input type="checkbox" /> Only with photo </label>
+      <label> <input type="checkbox" /> Only favorites </label>
+      <div class="grid">
+        /* 1 card */
+        <div class="profile-card">
+          <div class="avatar-container">
+            <img
+              src="https://cdn.britannica.com/45/223045-050-A6453D5D/Telsa-CEO-Elon-Musk-2014.jpg"
+              alt="Elon Musk"
+            />
+          </div>
+
+          <h3 class="profile-name">Elon<br />Musk</h3>
+          <p class="profile-info">Engineering</p>
+          <p class="profile-info" style="font-size: 12px">USA</p>
+        </div>
+        /* 2 card */
+        <div class="profile-card">
+          <div class="avatar-container">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScLACMIlpPGhfT4FWIcDaoZvNCgku_dn31c7GO4jbz8N0N5a2UjxnUoAo&s=10"
+              alt="Elon Musk"
+            />
+          </div>
+
+          <h3 class="profile-name">Pragg<br />Rameshbabu</h3>
+          <p class="profile-info">Chess</p>
+          <p class="profile-info" style="font-size: 12px">USA</p>
+        </div>
+        /* 3 card */
+        <div class="profile-card">
+          <div class="avatar-container">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMRdPoc1zpytTYZpDAbjMguxy3dbzIv6w-gYxdV2J6Ipv2rzO0DWp2hU_L&s=10"
+              alt="Elon Musk"
+            />
+          </div>
+
+          <h3 class="profile-name">John<br />Bruke</h3>
+          <p class="profile-info">Computer Science</p>
+          <p class="profile-info" style="font-size: 12px">USA</p>
+        </div>
+        /* 4 card */
+        <div class="profile-card">
+          <div class="avatar-container">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH6cU2I0DjTfH5IQalHQ9N1rW9Aq-AVLXLLG8k0kXn3SbnqvAmDBEC2uF&s=10"
+              alt="Elon Musk"
+            />
+          </div>
+
+          <h3 class="profile-name">Floor<br />Jansen</h3>
+          <p class="profile-info">Vocal</p>
+          <p class="profile-info" style="font-size: 12px">USA</p>
+        </div>
+        /* 5 card */
+        <div class="profile-card">
+          <div class="avatar-container">
+            <img
+              src="https://img.magnific.com/free-photo/young-woman-with-short-curly-hair-colorful-shirt-standing-with-crossed-arms-chest-looking-with-serious-face-green-wall_141793-29375.jpg?semt=ais_hybrid&w=740&q=80"
+              alt="Elon Musk"
+            />
+          </div>
+
+          <h3 class="profile-name">Ari<br />Tang</h3>
+          <p class="profile-info">Biology</p>
+          <p class="profile-info" style="font-size: 12px">USA</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="section-statistics">
+      <h2>Statistics</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Speciality</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Nationality</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Daisy Alexander</td>
+            <td>Chemistry</td>
+            <td>28</td>
+            <td>Female</td>
+            <td>Vietnam</td>
+          </tr>
+          <tr>
+            <td>Julia Bradley</td>
+            <td>Math</td>
+            <td>26</td>
+            <td>Female</td>
+            <td>USA</td>
+          </tr>
+          <tr>
+            <td>Rita Hart</td>
+            <td>Art</td>
+            <td>41</td>
+            <td>Female</td>
+            <td>Ireland</td>
+          </tr>
+          <tr>
+            <td>Jonathan Jacobs</td>
+            <td>Math</td>
+            <td>32</td>
+            <td>Male</td>
+            <td>England</td>
+          </tr>
+          <tr>
+            <td>Nathaniel White</td>
+            <td>Computer Science</td>
+            <td>37</td>
+            <td>Male</td>
+            <td>Austria</td>
+          </tr>
+          <tr>
+            <td>Frank Medina</td>
+            <td>English</td>
+            <td>43</td>
+            <td>Male</td>
+            <td>Italy</td>
+          </tr>
+          <tr>
+            <td>Ella Curtis</td>
+            <td>Chess</td>
+            <td>34</td>
+            <td>Female</td>
+            <td>USA</td>
+          </tr>
+          <tr>
+            <td>Claire Simmmons</td>
+            <td>Art</td>
+            <td>38</td>
+            <td>Female</td>
+            <td>Netherlands</td>
+          </tr>
+          <tr>
+            <td>Benjamin Knight</td>
+            <td>Biology</td>
+            <td>44</td>
+            <td>Male</td>
+            <td>Scotland</td>
+          </tr>
+          <tr>
+            <td>Norma Rose</td>
+            <td>Statistics</td>
+            <td>36</td>
+            <td>Female</td>
+            <td>France</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <span class="active">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <span class="disabled">...</span>
+        <a href="#">Last</a>
+      </div>
+    </div>
+
+    <div id="section-favorites"></div>
+
+    <div id="section-about">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque
+        facere, hic impedit itaque molestiae sit tempore? Ea in mollitia natus
+        rerum voluptates. Ea ex excepturi facere tempora. Aliquid asperiores hic
+        impedit iusto natus quaerat ratione sit? Culpa iusto optio voluptas
+        voluptate. Enim eveniet fugit iure maiores molestiae, praesentium quia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+        eligendi illum in inventore ipsum odio officiis omnis quisquam sed
+        tempora?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque esse
+        expedita id iusto mollitia, odit sint ullam veritatis vero?
+      </p>
+    </div>
+
+    <div class="navigation">
+      <a href="#section-teachers">
+        <button>Teachers</button>
+      </a>
+      <a href="#section-statistics">
+        <button>Statistics</button>
+      </a>
+      <a href="#section-favorites">
+        <button>Favorites</button>
+      </a>
+      <a href="#section-about">
+        <button>About</button>
+      </a>
+      <button>Add Teacher</button>
+    </div>
+  </body>
+</html>

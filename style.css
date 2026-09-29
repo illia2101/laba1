@@ -1,0 +1,16 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.avatar-container img {
+  width: 5%;
+  height: 5%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.search-container h1 {
+  font-family: "Arial", sans-serif;
+  font-size: 32px;
+  color: #333;
+}
