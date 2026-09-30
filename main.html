@@ -1,37 +1,141 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <language="en">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Teachinder</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    
     <div class="search-container">
       <h1>Teachinder</h1>
       <input type="text" placeholder="Name, note or age search..." />
       <button>Search</button>
     </div>
 
-    <div class="navigation">
-      <a href="#section-teachers">
-        <button>Teachers</button>
-      </a>
-      <a href="#section-statistics">
-        <button>Statistics</button>
-      </a>
-      <a href="#section-favorites">
-        <button>Favorites</button>
-      </a>
-      <a href="#section-about">
-        <button>About</button>
-      </a>
-      <button>Add Teacher</button>
-    </div>
+    <section class="navigation">
+      <a href="#section-teachers">Teachers</a>
+      <a href="#section-statistics">Statistics</a>
+      <a href="#section-favorites">Favorites</a>
+      <a href="#section-about">About</a>
 
-    <div id="section-teachers">
+      <button>Add Teacher</button>
+    </section>
+
+    <!--
+    <div class="modal add-teacher-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span>Add Teacher</span>
+          <button class="close-button">&times;</button>
+        </div>
+
+        <form>
+          <label for="teacher-name">Name</label>
+          <input type="text" id="teacher-name" placeholder="Enter name" />
+
+          <label for="speciality">Speciality</label>
+          <select id="speciality">
+            <option>Mathematics</option>
+            <option>Physics</option>
+            <option>Computer Science</option>
+            <option>Biology</option>
+            <option>Chess</option>
+          </select>
+
+          <div class="form-row">
+            <div>
+              <label for="country">Country</label>
+              <select id="country">
+                <option>Ukraine</option>
+                <option>USA</option>
+                <option>Germany</option>
+                <option>Poland</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="city">City</label>
+              <input type="text" id="city" placeholder="Enter city" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" />
+            </div>
+
+            <div>
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" />
+            </div>
+          </div>
+
+          <label for="birth-date">Date of birth</label>
+          <input type="date" id="birth-date" />
+
+          <div class="gender">
+            <span>Sex</span>
+
+            <label>
+              <input type="radio" name="sex" />
+              Male
+            </label>
+
+            <label>
+              <input type="radio" name="sex" />
+              Female
+            </label>
+          </div>
+
+          <label for="notes">Notes (optional)</label>
+
+          <textarea id="notes" rows="5"></textarea>
+
+          <button type="submit" class="add-button">Add</button>
+        </form>
+      </div>
+    </div>
+    -->
+    <!--
+    <div class="modal teacher-info-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span>Teacher Info</span>
+          <button class="close-button">&times;</button>
+        </div>
+
+        <div class="teacher-info">
+          <div class="teacher-info-avatar">
+            <img
+              src="https://cdn.britannica.com/45/223045-050-A6453D5D/Telsa-CEO-Elon-Musk-2014.jpg"
+              alt="Teacher"
+            />
+          </div>
+
+          <div class="teacher-details">
+            <h2>Elon Musk</h2>
+            <p><strong>Speciality:</strong> Computer Science</p>
+            <p><strong>Country:</strong> USA</p>
+            <p><strong>City:</strong> Los Angeles</p>
+            <p><strong>Age:</strong> 45</p>
+            <p><strong>Sex:</strong> Male</p>
+            <p><strong>Email:</strong> elon@example.com</p>
+            <p><strong>Phone:</strong> +1 234 567 890</p>
+          </div>
+
+          <p class="teacher-notes">
+            Experienced computer science teacher. Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. A atque facere, hic impedit itaque
+            molestiae sit tempore.
+          </p>
+        </div>
+      </div>
+    </div>
+  -->
+
+    <section id="section-teachers">
       <h2>Top Teachers</h2>
       <label for="age">Age:</label>
       <select id="age" name="age">
@@ -60,7 +164,7 @@
       <label> <input type="checkbox" /> Only with photo </label>
       <label> <input type="checkbox" /> Only favorites </label>
       <div class="grid">
-        /* 1 card */
+        <!-- 1 card -->
         <div class="profile-card">
           <div class="avatar-container">
             <img
@@ -73,7 +177,7 @@
           <p class="profile-info">Engineering</p>
           <p class="profile-info" style="font-size: 12px">USA</p>
         </div>
-        /* 2 card */
+        <!-- 2 card -->
         <div class="profile-card">
           <div class="avatar-container">
             <img
@@ -86,7 +190,7 @@
           <p class="profile-info">Chess</p>
           <p class="profile-info" style="font-size: 12px">USA</p>
         </div>
-        /* 3 card */
+        <!-- 3 card -->
         <div class="profile-card">
           <div class="avatar-container">
             <img
@@ -99,7 +203,7 @@
           <p class="profile-info">Computer Science</p>
           <p class="profile-info" style="font-size: 12px">USA</p>
         </div>
-        /* 4 card */
+        <!-- 4 card -->
         <div class="profile-card">
           <div class="avatar-container">
             <img
@@ -112,7 +216,7 @@
           <p class="profile-info">Vocal</p>
           <p class="profile-info" style="font-size: 12px">USA</p>
         </div>
-        /* 5 card */
+        <!-- 5 card -->
         <div class="profile-card">
           <div class="avatar-container">
             <img
@@ -125,10 +229,20 @@
           <p class="profile-info">Biology</p>
           <p class="profile-info" style="font-size: 12px">USA</p>
         </div>
-      </div>
-    </div>
 
-    <div id="section-statistics">
+        <div class="profile-card">
+          <div class="avatar-container">
+            <span>A.M</span>
+          </div>
+
+          <h3 class="profile-name">Anna<br />Makarievich</h3>
+          <p class="profile-info">Biology</p>
+          <p class="profile-info">Belarus</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-statistics">
       <h2>Statistics</h2>
       <table>
         <thead>
@@ -214,17 +328,89 @@
         </tbody>
       </table>
       <div class="pagination">
-        <span class="active">1</span>
+        <a href="#">1</a>
         <a href="#">2</a>
         <a href="#">3</a>
-        <span class="disabled">...</span>
+        <a href="#">...</a>
         <a href="#">Last</a>
       </div>
-    </div>
+    </section>
 
-    <div id="section-favorites"></div>
+    <section id="section-favorites">
+      <h2>Favorites</h2>
 
-    <div id="section-about">
+      <div class="favorites-container">
+        <button class="arrow left-arrow">&#10094;</button>
+
+        <div class="favorites-grid">
+          <!-- Ihor -->
+          <div class="profile-card">
+            <div class="avatar-container">
+              <img
+                src="https://cdn.britannica.com/45/223045-050-A6453D5D/Telsa-CEO-Elon-Musk-2014.jpg"
+                alt="Ihor Tkachuk"
+              />
+            </div>
+
+            <h3 class="profile-name">Ihor<br />Tkachuk</h3>
+            <p class="profile-info">Ukraine</p>
+          </div>
+
+          <!-- Anna -->
+          <div class="profile-card">
+            <div class="avatar-container avatar-placeholder">
+              <span>A.M</span>
+            </div>
+
+            <h3 class="profile-name">Anna<br />Makarievich</h3>
+            <p class="profile-info">Belarus</p>
+          </div>
+
+          <!-- John -->
+          <div class="profile-card">
+            <div class="avatar-container">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMRdPoc1zpytTYZpDAbjMguxy3dbzIv6w-gYxdV2J6Ipv2rzO0DWp2hU_L&s=10"
+                alt="John Burke"
+              />
+            </div>
+
+            <h3 class="profile-name">John<br />Burke</h3>
+            <p class="profile-info">Belgium</p>
+          </div>
+
+          <!-- Ari -->
+          <div class="profile-card">
+            <div class="avatar-container">
+              <img
+                src="https://img.magnific.com/free-photo/young-woman-with-short-curly-hair-colorful-shirt-standing-with-crossed-arms-chest-looking-with-serious-face-green-wall_141793-29375.jpg?semt=ais_hybrid&w=740&q=80"
+                alt="Ari Tang"
+              />
+            </div>
+
+            <h3 class="profile-name">Ari<br />Tang</h3>
+            <p class="profile-info">China</p>
+          </div>
+
+          <!-- Floor -->
+          <div class="profile-card">
+            <div class="avatar-container">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH6cU2I0DjTfH5IQalHQ9N1rW9Aq-AVLXLLG8k0kXn3SbnqvAmDBEC2uF&s=10"
+                alt="Floor Jansen"
+              />
+            </div>
+
+            <h3 class="profile-name">Floor<br />Jansen</h3>
+            <p class="profile-info">Denmark</p>
+          </div>
+        </div>
+
+        <button class="arrow right-arrow">&#10095;</button>
+      </div>
+    </section>
+
+    <section id="section-about">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque
         facere, hic impedit itaque molestiae sit tempore? Ea in mollitia natus
@@ -241,22 +427,15 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque esse
         expedita id iusto mollitia, odit sint ullam veritatis vero?
       </p>
-    </div>
+    </section>
 
-    <div class="navigation">
-      <a href="#section-teachers">
-        <button>Teachers</button>
-      </a>
-      <a href="#section-statistics">
-        <button>Statistics</button>
-      </a>
-      <a href="#section-favorites">
-        <button>Favorites</button>
-      </a>
-      <a href="#section-about">
-        <button>About</button>
-      </a>
+    <section class="navigation">
+      <a href="#section-teachers">Teachers</a>
+      <a href="#section-statistics">Statistics</a>
+      <a href="#section-favorites">Favorites</a>
+      <a href="#section-about">About</a>
+
       <button>Add Teacher</button>
-    </div>
+    </section>
   </body>
 </html>
