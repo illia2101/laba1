@@ -171,9 +171,102 @@ uniqueUsers.forEach((user) => {
   }
 });
 
-console.log(uniqueUsers);
-console.log(validateUsers(uniqueUsers));
-console.log(filterUsers(uniqueUsers, "Norway"));
-console.log(sortUsers(uniqueUsers, "age", "asc"));
-console.log(searchUsers(uniqueUsers, "Joe"));
-console.log(percentOfUsers(uniqueUsers, 30));
+// TASK 1
+
+console.log("\n========== TASK 1: FORMAT USERS ==========");
+
+console.log("Random users:", formattedUsers.length);
+console.log("Additional users:", formattedAdditionalUsers.length);
+console.log("All users:", allUsers.length);
+console.log("Unique users:", uniqueUsers.length);
+
+console.log("\nExample of formatted user:");
+console.log(uniqueUsers[0]);
+
+// TASK 2
+
+console.log("\n========== TASK 2: VALIDATION ==========");
+
+const validationResult = validateUsers(uniqueUsers);
+
+console.log(validationResult);
+
+// TASK 3
+
+console.log("\n========== TASK 3: FILTERING ==========");
+
+const filteredUsers = filterUsers(
+  uniqueUsers,
+  "United States",
+  30,
+  "male",
+  true,
+);
+
+console.log("Filter:");
+console.log("Country: United States");
+console.log("Age: 30");
+console.log("Gender: male");
+console.log("Favorite: true");
+
+console.log("Found users:", filteredUsers.length);
+console.log(filteredUsers);
+
+// TASK 4
+
+console.log("\n========== TASK 4: SORTING ==========");
+
+const sortedAsc = sortUsers(uniqueUsers, "age", "asc");
+const sortedDesc = sortUsers(uniqueUsers, "age", "desc");
+
+console.log("Age ascending:");
+
+console.log(
+  sortedAsc.map((user) => ({
+    name: user.full_name,
+    age: user.age,
+  })),
+);
+
+console.log("Age descending:");
+
+console.log(
+  sortedDesc.map((user) => ({
+    name: user.full_name,
+    age: user.age,
+  })),
+);
+
+// TASK 5
+
+console.log("\n========== TASK 5: SEARCH ==========");
+
+const searchByName = searchUsers(uniqueUsers, "Joe");
+
+console.log('Search: "Joe"');
+console.log("Result:", searchByName);
+
+const searchByAge = searchUsers(uniqueUsers, 30);
+
+console.log("Search: 30");
+console.log("Result:", searchByAge);
+
+// TASK 6
+
+console.log("\n========== TASK 6: PERCENTAGE ==========");
+
+const percentage = percentOfUsers(uniqueUsers, 30);
+
+console.log("Condition: age > 30");
+console.log("Total users:", uniqueUsers.length);
+console.log(
+  "Users with age > 30:",
+  uniqueUsers.filter((user) => user.age > 30).length,
+);
+console.log("Percentage:", percentage.toFixed(2) + "%");
+
+console.log("\n========== ALL TASKS COMPLETED ==========");
+
+const teachers = document.querySelector("#section-teachers .grid");
+console.log(teachers);
+function renderTeachers(teachers) {}
