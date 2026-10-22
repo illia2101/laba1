@@ -14,7 +14,7 @@ const courses = [
   "Statistics",
 ];
 
-function formatUsers(users) {
+export function formatUsers(users, startId = 0) {
   return users.map((user, index) => {
     const fullName = `${user.name.first} ${user.name.last}`;
     const randomCourse = courses[Math.floor(Math.random() * courses.length)];
@@ -38,7 +38,7 @@ function formatUsers(users) {
 
       picture_large: user.picture.large,
       picture_thumbnail: user.picture.thumbnail,
-      id: index + 1,
+      id: startId + index + 1,
       favorite: false,
       course: randomCourse,
       bg_color: "#ffffff",
@@ -104,3 +104,21 @@ uniqueUsers.forEach((user) => {
     console.log("INVALID:", user);
   }
 });
+
+export async function getUsers(results = 50, page = 1) {
+  const url = `https://randomuser.me/api?results=${results}&page=${page}&seed=teachinder`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error("Не вдалося отримати користувачів:", error);
+    return [];
+  }
+}

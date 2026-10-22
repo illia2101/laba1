@@ -1,0 +1,21 @@
+{
+  "teachers": [
+    {
+      "id": "fZzXAaNFw10",
+      "full_name": "ilyha",
+      "course": "Mathematics",
+      "country": "Ukraine",
+      "city": "",
+      "email": "zeroxyt2101@gmail.com",
+      "phone": "",
+      "b_date": "2004-10-28",
+      "gender": null,
+      "note": "",
+      "favorite": false,
+      "age": 21,
+      "picture_large": "",
+      "picture_thumbnail": ""
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

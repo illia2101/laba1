@@ -1,14 +1,12 @@
-import { uniqueUsers } from "../formatUsers.js";
 import TeacherCard from "./TeacherCard.jsx";
 import { useState } from "react";
 
-function TeacherFilters({ onFiltersChange }) {
+function TeacherFilters({ onFiltersChange, teachers }) {
   const [selectedCountry, setSelectedCountry] = useState("all");
   const [selectedSex, setSelectedSex] = useState("all");
   const [selectedAgeRange, setSelectedAgeRange] = useState("all");
   const [onlyWithPhoto, setOnlyWithPhoto] = useState(false);
   const [onlyFavorites, setOnlyFavorites] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="teacher-filters">
@@ -56,7 +54,7 @@ function TeacherFilters({ onFiltersChange }) {
         }}
       >
         <option value="all">All</option>
-        {[...new Set(uniqueUsers.map((teacher) => teacher.country))]
+        {[...new Set(teachers.map((teacher) => teacher.country))]
           .filter(Boolean)
           .sort()
           .map((country) => (

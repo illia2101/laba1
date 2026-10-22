@@ -1,6 +1,5 @@
-import { uniqueUsers } from "../formatUsers.js";
 import TeacherCard from "./TeacherCard.jsx";
-import { useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 function TeacherList({
   favorites,
@@ -8,60 +7,58 @@ function TeacherList({
   filters,
   searchTerm,
   teachers,
+  onFilteredTeachersChange,
 }) {
   const query = searchTerm.trim().toLowerCase();
   const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [showMap, setShowMap] = useState(false);
 
-  const filteredTeachers = teachers.filter((teacher) => {
-    const matchesSearchTerm =
-      String(teacher.full_name ?? "")
-        .toLowerCase()
-        .includes(query) ||
-      String(teacher.note ?? "")
-        .toLowerCase()
-        .includes(query) ||
-      String(teacher.age ?? "").includes(query);
-    const matchesCountry =
-      filters.country === "all" || teacher.country === filters.country;
+  const filteredTeachers = useMemo(() => {
+    return teachers.filter((teacher) => {
+      const matchesSearchTerm =
+        String(teacher.full_name ?? "")
+          .toLowerCase()
+          .includes(query) ||
+        String(teacher.note ?? "")
+          .toLowerCase()
+          .includes(query) ||
+        String(teacher.age ?? "").includes(query);
+      const matchesCountry =
+        filters.country === "all" || teacher.country === filters.country;
 
-    const matchesSex =
-      filters.sex === "all" ||
-      String(teacher.gender).toLowerCase() === filters.sex;
+      const matchesSex =
+        filters.sex === "all" ||
+        String(teacher.gender).toLowerCase() === filters.sex;
 
-    const matchesAge = (() => {
-      if (filters.ageRange === "all") return true;
+      const matchesAge = (() => {
+        if (filters.ageRange === "all") return true;
 
-      const [minAge, maxAge] = filters.ageRange.split("-").map(Number);
-      const age = Number(teacher.age);
+        const [minAge, maxAge] = filters.ageRange.split("-").map(Number);
+        const age = Number(teacher.age);
 
-      return age >= minAge && age <= maxAge;
-    })();
+        return age >= minAge && age <= maxAge;
+      })();
 
-    const matchesPhoto =
-      !filters.onlyWithPhoto || Boolean(teacher.picture_large);
+      const matchesPhoto =
+        !filters.onlyWithPhoto || Boolean(teacher.picture_large);
 
-    const matchesFavorite =
-      !filters.onlyFavorites || favorites.includes(teacher.id);
+      const matchesFavorite =
+        !filters.onlyFavorites || favorites.includes(teacher.id);
 
-    return (
-      matchesSearchTerm &&
-      matchesCountry &&
-      matchesSex &&
-      matchesAge &&
-      matchesPhoto &&
-      matchesFavorite
-    );
-  });
+      return (
+        matchesSearchTerm &&
+        matchesCountry &&
+        matchesSex &&
+        matchesAge &&
+        matchesPhoto &&
+        matchesFavorite
+      );
+    });
+  }, [teachers, query, filters, favorites]);
+  useEffect(() => {
+    onFilteredTeachersChange(filteredTeachers);
+  }, [filteredTeachers, onFilteredTeachersChange]);
 
-  const favoriteTeachers = uniqueUsers.filter((teacher) =>
-    favorites.includes(teacher.id),
-  );
-
-  const showTeacherInfo = (teacher) => {
-    setSelectedTeacher(teacher);
-    setShowMap(false);
-  };
   const toggleFavorite = (teacher, event) => {
     event.stopPropagation();
 

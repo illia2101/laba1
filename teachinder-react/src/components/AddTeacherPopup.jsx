@@ -17,19 +17,38 @@ function AddTeacherPopup({ onClose, onAddTeacher }) {
 
             const formData = new FormData(event.currentTarget);
 
+            const birthDate = formData.get("birth_date");
+            const today = new Date();
+            const birth = new Date(`${birthDate}T00:00:00`);
+
+            let age = today.getFullYear() - birth.getFullYear();
+
+            if (
+              today.getMonth() < birth.getMonth() ||
+              (today.getMonth() === birth.getMonth() &&
+                today.getDate() < birth.getDate())
+            ) {
+              age--;
+            }
+
+            if (age < 18 || age > 100) {
+              alert("Age must be between 18 and 100.");
+              return;
+            }
+
             const newTeacher = {
               id: Date.now(),
-              full_name: formData.get("full_name"),
+              full_name: formData.get("full_name").trim(),
               course: formData.get("course"),
               country: formData.get("country"),
-              city: formData.get("city"),
-              email: formData.get("email"),
-              phone: formData.get("phone"),
-              b_day: formData.get("b_day"),
+              city: formData.get("city").trim(),
+              email: formData.get("email").trim(),
+              phone: formData.get("phone").trim(),
+              b_date: birthDate,
               gender: formData.get("gender"),
-              note: formData.get("note"),
+              note: formData.get("note").trim(),
               favorite: false,
-              age: 0,
+              age,
               picture_large: "",
               picture_thumbnail: "",
             };
@@ -81,7 +100,7 @@ function AddTeacherPopup({ onClose, onAddTeacher }) {
           <div className="form-row">
             <div>
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" />
+              <input type="email" id="email" name="email" required />
             </div>
 
             <div>
@@ -91,25 +110,25 @@ function AddTeacherPopup({ onClose, onAddTeacher }) {
           </div>
 
           <label htmlFor="birth-date">Date of birth</label>
-          <input type="date" id="birth-date" name="birth_date" />
+          <input type="date" id="birth-date" name="birth_date" required />
 
           <div className="gender">
             <span>Sex</span>
 
             <label>
-              <input type="radio" name="sex" />
+              <input type="radio" name="sex" value="male" required />
               Male
             </label>
 
             <label>
-              <input type="radio" name="sex" />
+              <input type="radio" name="sex" value="female" required />
               Female
             </label>
           </div>
 
           <label htmlFor="notes">Notes (optional)</label>
 
-          <textarea id="notes" rows="5"></textarea>
+          <textarea id="notes" name="note" rows="5"></textarea>
 
           <button type="submit" className="add-button">
             Add

@@ -1,4 +1,3 @@
-import { uniqueUsers } from "../formatUsers.js";
 import { useState } from "react";
 
 function TeacherStatistics({ teachers }) {
@@ -23,6 +22,14 @@ function TeacherStatistics({ teachers }) {
 
     return sortDirection === "asc" ? result : -result;
   });
+  const columns = [
+    { label: "Name", field: "full_name" },
+    { label: "Speciality", field: "course" },
+    { label: "Age", field: "age" },
+    { label: "Gender", field: "gender" },
+    { label: "Nationality", field: "country" },
+  ];
+
   const totalPages = Math.ceil(sortedTeachers.length / teachersPerPage);
 
   const startIndex = (currentPage - 1) * teachersPerPage;
@@ -48,30 +55,12 @@ function TeacherStatistics({ teachers }) {
       <table>
         <thead>
           <tr>
-            <th onClick={() => handleSort("full_name")}>
-              Name{" "}
-              {sortField === "full_name" &&
-                (sortDirection === "asc" ? "↑" : "↓")}
-            </th>
-
-            <th onClick={() => handleSort("course")}>
-              Speciality{" "}
-              {sortField === "course" && (sortDirection === "asc" ? "↑" : "↓")}
-            </th>
-
-            <th onClick={() => handleSort("age")}>
-              Age {sortField === "age" && (sortDirection === "asc" ? "↑" : "↓")}
-            </th>
-
-            <th onClick={() => handleSort("gender")}>
-              Gender{" "}
-              {sortField === "gender" && (sortDirection === "asc" ? "↑" : "↓")}
-            </th>
-
-            <th onClick={() => handleSort("country")}>
-              Nationality{" "}
-              {sortField === "country" && (sortDirection === "asc" ? "↑" : "↓")}
-            </th>
+            {columns.map(({ label, field }) => (
+              <th key={field} onClick={() => handleSort(field)}>
+                {label}{" "}
+                {sortField === field && (sortDirection === "asc" ? "↑" : "↓")}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
