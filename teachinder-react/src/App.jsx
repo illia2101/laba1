@@ -6,6 +6,7 @@ import Notes from "./components/Notes.jsx";
 import { getUsers, formatUsers } from "./formatUsers.js";
 import "./App.css";
 import TeacherStatistics from "./components/TeacherStatistics.jsx";
+import TeacherPivot from "./components/TeacherPivot.jsx";
 import TeacherCard from "./components/TeacherCard.jsx";
 import { useEffect, useRef, useState } from "react";
 
@@ -96,6 +97,7 @@ function App() {
       <section className="navigation">
         <a href="#section-teachers">Teachers</a>
         <a href="#section-statistics">Statistics</a>
+        <a href="#section-pivot">Pivot Table</a>
         <a href="#section-favorites">Favorites</a>
         <a href="#section-about">About</a>
 
@@ -126,6 +128,8 @@ function App() {
       </section>
 
       <TeacherStatistics teachers={filteredTeachers} />
+
+      <TeacherPivot teachers={filteredTeachers} />
 
       <section id="section-favorites">
         <h2>Favorites</h2>
@@ -168,6 +172,7 @@ function App() {
       <section className="navigation">
         <a href="#section-teachers">Teachers</a>
         <a href="#section-statistics">Statistics</a>
+        <a href="#section-pivot">Pivot Table</a>
         <a href="#section-favorites">Favorites</a>
         <a href="#section-about">About</a>
 

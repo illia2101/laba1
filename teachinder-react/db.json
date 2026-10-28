@@ -15,6 +15,38 @@
       "age": 21,
       "picture_large": "",
       "picture_thumbnail": ""
+    },
+    {
+      "id": "24rSs6SaCgY",
+      "full_name": "some",
+      "course": "Mathematics",
+      "country": "Germany",
+      "city": "ffds",
+      "email": "zeroxyt2101@gmail.com",
+      "phone": "89899967967",
+      "b_date": "2007-06-06",
+      "gender": null,
+      "note": "",
+      "favorite": false,
+      "age": 19,
+      "picture_large": "",
+      "picture_thumbnail": ""
+    },
+    {
+      "id": "jERlmTeX31M",
+      "full_name": "sere",
+      "course": "Mathematics",
+      "country": "Ukraine",
+      "city": "aaaaa",
+      "email": "zeroxyt2101@gmail.com",
+      "phone": "87769856",
+      "b_date": "2006-06-23",
+      "gender": null,
+      "note": "",
+      "favorite": false,
+      "age": 20,
+      "picture_large": "",
+      "picture_thumbnail": ""
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,5 +1,7 @@
 import TeacherCard from "./TeacherCard.jsx";
 import { useEffect, useState, useMemo } from "react";
+import TeacherMap from "./TeacherMap";
+import _ from "lodash";
 
 function TeacherList({
   favorites,
@@ -9,31 +11,30 @@ function TeacherList({
   teachers,
   onFilteredTeachersChange,
 }) {
-  const query = searchTerm.trim().toLowerCase();
+  const query = _.toLower(_.trim(searchTerm));
+
   const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [showMap, setShowMap] = useState(false);
 
   const filteredTeachers = useMemo(() => {
-    return teachers.filter((teacher) => {
+    return _.filter(teachers, (teacher) => {
       const matchesSearchTerm =
-        String(teacher.full_name ?? "")
-          .toLowerCase()
-          .includes(query) ||
-        String(teacher.note ?? "")
-          .toLowerCase()
-          .includes(query) ||
-        String(teacher.age ?? "").includes(query);
+        _.includes(_.toLower(String(teacher.full_name ?? "")), query) ||
+        _.includes(_.toLower(String(teacher.note ?? "")), query) ||
+        _.includes(String(teacher.age ?? ""), query);
+
       const matchesCountry =
         filters.country === "all" || teacher.country === filters.country;
 
       const matchesSex =
         filters.sex === "all" ||
-        String(teacher.gender).toLowerCase() === filters.sex;
+        _.toLower(String(teacher.gender ?? "")) === filters.sex;
 
       const matchesAge = (() => {
         if (filters.ageRange === "all") return true;
 
-        const [minAge, maxAge] = filters.ageRange.split("-").map(Number);
+        const [minAge, maxAge] = _.map(_.split(filters.ageRange, "-"), Number);
+
         const age = Number(teacher.age);
 
         return age >= minAge && age <= maxAge;
@@ -43,7 +44,7 @@ function TeacherList({
         !filters.onlyWithPhoto || Boolean(teacher.picture_large);
 
       const matchesFavorite =
-        !filters.onlyFavorites || favorites.includes(teacher.id);
+        !filters.onlyFavorites || _.includes(favorites, teacher.id);
 
       return (
         matchesSearchTerm &&
@@ -55,6 +56,7 @@ function TeacherList({
       );
     });
   }, [teachers, query, filters, favorites]);
+
   useEffect(() => {
     onFilteredTeachersChange(filteredTeachers);
   }, [filteredTeachers, onFilteredTeachersChange]);
@@ -70,16 +72,16 @@ function TeacherList({
   };
   return (
     <div className="grid">
-      {filteredTeachers.map((teacher) => (
+      {_.map(filteredTeachers, (teacher) => (
         <TeacherCard
           key={teacher.id}
           teacher={teacher}
           onClick={() => setSelectedTeacher(teacher)}
-          isFavorite={favorites.includes(teacher.id)}
+          isFavorite={_.includes(favorites, teacher.id)}
           onToggleFavorite={() => {
             setFavorites((prev) =>
-              prev.includes(teacher.id)
-                ? prev.filter((id) => id !== teacher.id)
+              _.includes(prev, teacher.id)
+                ? _.filter(prev, (id) => id !== teacher.id)
                 : [...prev, teacher.id],
             );
           }}
@@ -156,16 +158,16 @@ function TeacherList({
               </div>
 
               <p className="teacher-notes">{selectedTeacher.note}</p>
-              <a
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault();
-                  setShowMap((prev) => !prev);
-                }}
-              >
-                toggle map
-              </a>
-              {showMap && <div className="teacher-map">Map will be here</div>}
+              <button type="button" onClick={() => setShowMap((prev) => !prev)}>
+                {showMap ? "Hide map" : "Show map"}
+              </button>
+
+              {showMap && (
+                <TeacherMap
+                  latitude={selectedTeacher.coordinates?.latitude}
+                  longitude={selectedTeacher.coordinates?.longitude}
+                />
+              )}
             </div>
           </div>
         </div>
