@@ -1,5 +1,6 @@
 import TeacherCard from "./TeacherCard.jsx";
 import { useState } from "react";
+import _ from "lodash";
 
 function TeacherFilters({ onFiltersChange, teachers }) {
   const [selectedCountry, setSelectedCountry] = useState("all");
@@ -54,14 +55,13 @@ function TeacherFilters({ onFiltersChange, teachers }) {
         }}
       >
         <option value="all">All</option>
-        {[...new Set(teachers.map((teacher) => teacher.country))]
-          .filter(Boolean)
-          .sort()
-          .map((country) => (
+        {_.sortBy(_.uniq(_.filter(_.map(teachers, "country"), Boolean))).map(
+          (country) => (
             <option key={country} value={country}>
               {country}
             </option>
-          ))}
+          ),
+        )}
       </select>
 
       <label htmlFor="sex">Sex:</label>

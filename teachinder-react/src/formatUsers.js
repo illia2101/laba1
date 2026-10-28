@@ -1,4 +1,5 @@
 import { randomUserMock, additionalUsers } from "./data/FE4U-Lab2-mock (1).js";
+import _ from "lodash";
 const courses = [
   "Mathematics",
   "Physics",
@@ -15,7 +16,7 @@ const courses = [
 ];
 
 export function formatUsers(users, startId = 0) {
-  return users.map((user, index) => {
+  return _.map(users, (user, index) => {
     const fullName = `${user.name.first} ${user.name.last}`;
     const randomCourse = courses[Math.floor(Math.random() * courses.length)];
 
@@ -23,19 +24,16 @@ export function formatUsers(users, startId = 0) {
       gender: user.gender,
       title: user.name.title,
       full_name: fullName,
-
       city: user.location.city,
       state: user.location.state,
       country: user.location.country,
       postcode: user.location.postcode,
       coordinates: user.location.coordinates,
       timezone: user.location.timezone,
-
       email: user.email,
       b_date: user.dob.date,
       age: user.dob.age,
       phone: user.phone,
-
       picture_large: user.picture.large,
       picture_thumbnail: user.picture.thumbnail,
       id: startId + index + 1,
@@ -47,7 +45,7 @@ export function formatUsers(users, startId = 0) {
   });
 }
 function formatAdditionalUsers(users) {
-  return users.map((user) => {
+  return _.map(users, (user) => {
     const randomCourse = courses[Math.floor(Math.random() * courses.length)];
     return {
       gender: user.gender,
@@ -76,34 +74,36 @@ function formatAdditionalUsers(users) {
 const formattedUsers = formatUsers(randomUserMock);
 const formattedAdditionalUsers = formatAdditionalUsers(additionalUsers);
 const allUsers = [...formattedUsers, ...formattedAdditionalUsers];
-export const uniqueUsers = allUsers.filter((user, index, array) => {
-  return index === array.findIndex((item) => item.full_name === user.full_name);
-});
+export const uniqueUsers = _.uniqBy(allUsers, "full_name");
 
-uniqueUsers.forEach((user) => {
-  if (
-    typeof user.gender !== "string" ||
-    typeof user.full_name !== "string" ||
-    user.full_name.length === 0 ||
-    user.full_name[0] !== user.full_name[0].toUpperCase() ||
-    typeof user.note !== "string" ||
-    typeof user.state !== "string" ||
-    user.state.length === 0 ||
-    user.state[0] !== user.state[0].toUpperCase() ||
-    typeof user.city !== "string" ||
-    user.city.length === 0 ||
-    user.city[0] !== user.city[0].toUpperCase() ||
-    typeof user.country !== "string" ||
-    user.country.length === 0 ||
-    user.country[0] !== user.country[0].toUpperCase() ||
-    typeof user.age !== "number" ||
-    typeof user.phone !== "string" ||
-    typeof user.email !== "string" ||
-    !user.email.includes("@")
-  ) {
+_.forEach(uniqueUsers, (user) => {
+  if (!isValidUser(user)) {
     console.log("INVALID:", user);
   }
 });
+
+export function isValidUser(user) {
+  return (
+    _.isString(user.gender) &&
+    _.isString(user.full_name) &&
+    user.full_name.length > 0 &&
+    user.full_name[0] === user.full_name[0].toUpperCase() &&
+    _.isString(user.note) &&
+    _.isString(user.state) &&
+    user.state.length > 0 &&
+    user.state[0] === user.state[0].toUpperCase() &&
+    _.isString(user.city) &&
+    user.city.length > 0 &&
+    user.city[0] === user.city[0].toUpperCase() &&
+    _.isString(user.country) &&
+    user.country.length > 0 &&
+    user.country[0] === user.country[0].toUpperCase() &&
+    _.isNumber(user.age) &&
+    _.isString(user.phone) &&
+    _.isString(user.email) &&
+    _.includes(user.email, "@")
+  );
+}
 
 export async function getUsers(results = 50, page = 1) {
   const url = `https://randomuser.me/api?results=${results}&page=${page}&seed=teachinder`;
@@ -118,7 +118,7 @@ export async function getUsers(results = 50, page = 1) {
     const data = await response.json();
     return data.results;
   } catch (error) {
-    console.error("Не вдалося отримати користувачів:", error);
+    console.error(error);
     return [];
   }
 }
